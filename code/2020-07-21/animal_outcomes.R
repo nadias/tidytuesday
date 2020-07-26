@@ -129,34 +129,30 @@ animal_outcomes <- animal_outcomes %>%
 
 # Exploration
 
-## Keep only outcomes related to cats and dogs
-animal_outcomes_pets <- animal_outcomes %>%
-  filter(animal_type == 'Dogs' | animal_type == 'Cats')
-
 
 ## Get percentage of different animal types
 ## Dogs - 1148313 complaints (50.7%)
 ## Cats - 1117527 complaints (49.3%)
-animal_outcomes_pets%>%
+animal_outcomes%>%
   group_by(animal_type) %>% 
   summarise(n = sum(Total)) %>%
   mutate(Percentage=n/sum(n)*100)
 
 
 ## Get percentage of outcomes
-animal_outcomes_pets %>%
+animal_outcomes %>%
   group_by(outcome) %>% 
   summarise(n = sum(Total)) %>%
   mutate(Percentage=n/sum(n)*100)
 
 
 ## Keep only the year 2018
-animal_outcomes_pets_2018 <- animal_outcomes_pets %>%
+animal_outcomes_2018 <- animal_outcomes %>%
   filter(year == "2018")
 
 
 ## Get percentage of outcomes (2018 only)
-animal_outcomes_pets_2018 %>%
+animal_outcomes_2018 %>%
   group_by(outcome) %>% 
   summarise(n = sum(Total)) %>%
   mutate(Percentage=n/sum(n)*100)
